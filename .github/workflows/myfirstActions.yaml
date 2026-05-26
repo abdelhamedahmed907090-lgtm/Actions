@@ -6,9 +6,32 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v6.0.2
-
-    - name: Executing Bashscript
+    - name: ExecutingBash
       run: |
         chmod +x bash.sh
-        ./bash.sh      
-        cat  dragon.txt 
+        ./bash.sh
+    
+    - name: Sleep For 30 Secound
+      run: sleep 30
+  
+  test-jop2:
+    needs: first-jop
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sleep for 10 Secound
+        run: sleep 10
+      
+      - name: dragon file Exists
+        run : grep -i "hellodragon" Dragon.txt
+
+        
+  test-jop3:
+    needs: [first-jop,test-jop2]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read File
+        run: cat Dragon.txt
+    
+
+    
+    
