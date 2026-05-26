@@ -1,7 +1,7 @@
 name: firstAction
 on: push
 env:
-  fileName: "dragon.txt"
+  fileName: dragon.txt
 jobs:
   first-jop:
     runs-on: ubuntu-latest
