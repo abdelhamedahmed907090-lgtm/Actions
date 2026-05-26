@@ -10,4 +10,5 @@ jobs:
     - name: Executing Bashscript
       run: |
         chmod +x bash.sh
-        ./bash.sh        
+        ./bash.sh      
+        cat  dragon.txt 
