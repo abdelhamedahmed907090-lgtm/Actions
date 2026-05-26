@@ -11,26 +11,36 @@ jobs:
         chmod +x bash.sh
         ./bash.sh
     
-    - name: Sleep For 30 Secound
-      run: sleep 30
+    - name: arifact upload
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: dragon-text-file
+        path: dragon.txt
   
   test-jop2:
     needs: first-jop
     runs-on: ubuntu-latest
     steps:
-      - name: Sleep for 10 Secound
-        run: sleep 10
-      
-      - name: dragon file Exists
-        run : grep -i "hellodragon" Dragon.txt
+    - name: arifact Download
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: dragon-text-file
 
-        
+    - name: dragon file Exists
+      run : grep -i "hellodragon" dragon.txt
+
+
   test-jop3:
     needs: [first-jop,test-jop2]
     runs-on: ubuntu-latest
     steps:
-      - name: Read File
-        run: cat Dragon.txt
+    - name: arifact Download
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: dragon-text-file
+      
+    - name: Read File
+      run: cat dragon.txt
     
 
     
