@@ -1,0 +1,13 @@
+name: firstAction
+on: push
+jobs:
+  first-jop:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6.0.2
+
+    - name: Executing Bashscript
+      run: |
+        chmod +x bash.sh
+        ./bash.sh        
